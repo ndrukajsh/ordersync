@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="seizera" translate="label" sortOrder="10">
+            <label>Seizera</label>
+        </tab>
+        <section id="ordersync" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Main Magento Instance Credentials</label>
+            <tab>seizera</tab>
+            <resource>Seizera_OrderSync::maincredentials_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Credentials Configuration</label>
+                <field id="main_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Main Magento instance url</label>
+                    <comment>Enter main Magento instance url</comment>
+                </field>
+                <field id="main_username" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Main Magento instance username</label>
+                    <comment>Enter main Magento instance admin username, make sure an integration is created for this user</comment>
+                </field>
+                <field id="main_password" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Main Magento instance password</label>
+                    <comment>Enter main Magento instance admin password.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

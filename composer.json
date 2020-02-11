@@ -1,0 +1,14 @@
+{
+    "name": "shpresim/ordersync",
+    "type": "library",
+    "description": "This module is used to automatially push order from Magento to other Magento platforms",
+    "keywords": ["magento","order","sync"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shpresim Ndrukaj",
+            "email": "ndrukajshpresim@gmail.com",
+            "role": "Developer"
+        }
+    ],
+}
