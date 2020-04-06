@@ -1,13 +1,13 @@
 <?php
 
-namespace Seizera\OrderSync\Helper;
+namespace Seizera\MageSync\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Store\Model\ScopeInterface;
 
 class Data extends AbstractHelper
 {
-	const XML_PATH_ORDERSYNC = 'ordersync/';
+	const XML_PATH_MageSync = 'MageSync/';
 
 	public function getConfigValue($field, $storeId = null){
 		return $this->scopeConfig->getValue(
@@ -16,6 +16,10 @@ class Data extends AbstractHelper
 	}
 
 	public function getGeneralConfig($code, $storeId = null){
-		return $this->getConfigValue(self::XML_PATH_ORDERSYNC .'general/'. $code, $storeId);
+		return $this->getConfigValue(self::XML_PATH_MageSync .'general/'. $code, $storeId);
+	}
+
+	public function getCronConfig($code, $storeId = null){
+		return $this->getConfigValue(self::XML_PATH_MageSync .'cron_sync/'. $code, $storeId);
 	}
 }

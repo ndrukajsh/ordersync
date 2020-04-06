@@ -1,5 +1,5 @@
 {
-    "name": "shpresim/ordersync",
+    "name": "shpresim/magesync",
     "type": "library",
     "description": "This module is used to automatially push order from Magento to other Magento platforms",
     "keywords": ["magento","order","sync"],

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add 
+        	id="Seizera_MageSync::sync" 
+        	title="Seizera Sync" 
+        	module="Seizera_MageSync" 
+        	sortOrder="51" 
+        	resource="Seizera_MageSync::sync"/>
+        <add 
+        	id="Seizera_MageSync::categories" 
+        	title="Categories Sync" 
+        	module="Seizera_MageSync" 
+        	sortOrder="10" 
+        	parent="Seizera_MageSync::sync" 
+        	action="seizerasync/categories/index" 
+        	resource="Seizera_MageSync::categories"/>
+        <add 
+        	id="Seizera_MageSync::products" 
+        	title="Products Sync" 
+        	module="Seizera_MageSync" 
+        	sortOrder="20" 
+        	action="seizerasync/products/index" 
+        	resource="Seizera_MageSync::products" 
+        	parent="Seizera_MageSync::sync"/>
+    </menu>
+</config>
