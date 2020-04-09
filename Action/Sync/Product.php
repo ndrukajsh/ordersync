@@ -110,7 +110,7 @@ class Product extends Communication
                 // Adding Image to product
                 $imagePath = $this->getUrl() . 'pub/media/catalog/product' . $image['file']; // path of the image
                 // check if image exists in server
-                if ($this->checkRemoteFileExists($imagePath)) {
+                // if ($this->checkRemoteFileExists($imagePath)) {
                     $path = $this->downloadProductImage($imagePath);
                     $imgRoles = [];
                     if ($i == 0) {
@@ -119,7 +119,7 @@ class Product extends Communication
                     $productObject->addImageToMediaGallery($path, $imgRoles, false, false);
                     $productObject->save();
                     unlink($path);
-                }
+                // }
                 $i++;
             }
         }
