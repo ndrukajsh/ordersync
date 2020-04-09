@@ -38,9 +38,13 @@ class Products
 	    $i = 0;
 
 	    foreach ($total['items'] as $r) {
-	        $sku = $r['sku'];
+	    	$sku = str_replace(' ', '%20', $r['sku']);
 	        $stockApiUrl = $this->_baseCommunication->getUrl() . "rest/V1/stockItems/$sku";
 	        $qtyData = $this->_baseCommunication->makeGetRequest($stockApiUrl);
+	        if (!isset($qtyData['qty']) || is_null($qtyData)) {
+	        	$qtyData = [];
+	        	$qtyData['qty'] = 99999;
+	        }
 	        $result[] = $r;
 	        $result[$i]['qty'] = $qtyData['qty'];
 	        $i++;
