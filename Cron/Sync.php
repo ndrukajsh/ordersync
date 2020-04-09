@@ -5,7 +5,8 @@ namespace Seizera\MageSync\Cron;
 use \Psr\Log\LoggerInterface;
 use \Seizera\MageSync\Model\ResourceModel\CategorySyncLog\CollectionFactory as CatCollectionFactory;
 use \Seizera\MageSync\Model\ResourceModel\ProductSyncLog\CollectionFactory as ProductsCollectionFactory;
-use \Seizera\MageSync\Action\Sync\SyncHandler;
+use \Seizera\MageSync\Action\Sync\Product;
+use \Seizera\MageSync\Action\Sync\Category;
 use \Seizera\MageSync\Model\Sync\Categories as MainCategories;
 use \Seizera\MageSync\Model\Sync\Products as MainProducts;
 use \Seizera\MageSync\Helper\Data;
@@ -14,7 +15,8 @@ class Sync {
 
 	protected $_logger;
 	protected $_mainCategories;
-	protected $_syncHandler;
+	protected $_productAction;
+	protected $_categoryAction;
 	protected $_collectionFactory;
 	protected $_mainProducts;
 	protected $_productsCollectionFactory;
@@ -22,7 +24,8 @@ class Sync {
 
 	public function __construct(
 		LoggerInterface $logger,
-		SyncHandler $syncHandler,
+		Product $productAction,
+		Category $categoryAction,
 		MainCategories $mainCategories,
 		MainProducts $mainProducts,
 		ProductsCollectionFactory $productsCollectionFactory,
@@ -31,7 +34,8 @@ class Sync {
 	) {
 		$this->_logger = $logger;
 		$this->_dataHelper = $dataHelper;
-		$this->_syncHandler = $syncHandler;
+		$this->_productAction = $productAction;
+		$this->_categoryAction = $categoryAction;
 		$this->_mainCategories = $mainCategories;
 		$this->_mainProducts = $mainProducts;
 		$this->_productsCollectionFactory = $productsCollectionFactory;
@@ -56,10 +60,10 @@ class Sync {
 			    if (in_array($category['id'], $collection)) {
 			        $catId = array_search($category['id'], $collection);
 			        // update category
-			        $this->_syncHandler->updateClientCat($catId, $category);
+			        $this->_categoryAction->updateClientCat($catId, $category);
 			    }else{
 			        // create category
-			        $this->_syncHandler->createCategories($category);
+			        $this->_categoryAction->createCategories($category);
 			    }
 			}
 			// Products
@@ -77,10 +81,10 @@ class Sync {
 			    if (in_array($product['id'], $collection)) {
 			        $pId = array_search($product['id'], $collection);
 			        // update product
-			        $this->_syncHandler->updateClientProduct($pId, $product);
+			        $this->_productAction->updateClientProduct($pId, $product);
 			    }else{
 			        // create product
-			        $this->_syncHandler->createProduct($product);
+			        $this->_productAction->createProduct($product);
 			    }
 			}
 			$this->_logger->info('================== End Sync ================== ');

@@ -24,11 +24,12 @@ class Products
 	public function getProducts($sku = null){
 	    // $apiUrl = $this->_baseCommunication->getUrl() . 'rest/V1/products?searchCriteria';
 	    // model method called here
+	    // die(var_dump('expression'));
 	    $lastSync = $this->getLastSync();
 	    $lastSync = $this->_baseCommunication->convertToCurrentTimezone($lastSync);
 	    $lastSync = str_replace(' ', '%20', $lastSync);
 
-	    $apiUrl = $this->_baseCommunication->getUrl() . 'rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=updated_at&searchCriteria[filter_groups][0][filters][0][value]='.$lastSync.'&searchCriteria[filter_groups][0][filters][0][condition_type]=gteq';
+	    $apiUrl = $this->_baseCommunication->getUrl() . 'rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=updated_at&searchCriteria[filter_groups][0][filters][0][value]='.$lastSync.'&searchCriteria[filter_groups][0][filters][0][condition_type]=gteq&searchCriteria[pageSize]=10';
 	    if (!is_null($sku)) {
 	        $apiUrl = $this->_baseCommunication->getUrl() . "rest/V1/products/$sku";
 	    }

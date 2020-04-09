@@ -36,13 +36,14 @@ class CategorySyncLog extends AbstractModel implements IdentityInterface
 		return $this->getData('sync_time');
 	}
 
-	public function getOdooCategoryId(){ 
-		return $this->getData('odoo_category_id');
-	}
-
-	public function getMageCategoryId(){ 
+	public function getMainMageCategoryId(){ 
 		return $this->getData('mage_category_id');
 	}
+
+	public function getClientMageCategoryId(){ 
+		return $this->getData('mage_client_category_id');
+	}
+
 
 	public function getSyncType(){ 
 		return $this->getData('sync_type');
@@ -53,8 +54,8 @@ class CategorySyncLog extends AbstractModel implements IdentityInterface
 	public function setSyncTime($syncTime){
 		return $this->setData('sync_time', $syncTime);
 	}
-	public function setOdooCategoryId($odooCategoryId){
-		return $this->setData('odoo_category_id', $odooCategoryId);
+	public function setClientMageCategoryId($clientCatId){
+		return $this->setData('mage_client_category_id', $clientCatId);
 	}
 	public function setMageCategoryId($mageCategoryId){
 		return $this->setData('mage_category_id', $mageCategoryId);
