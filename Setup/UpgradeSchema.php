@@ -21,7 +21,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
         $installer = $setup;
 
         $installer->startSetup();
-        if (version_compare($context->getVersion(), "0.0.2", "<")) {
+        if (version_compare($context->getVersion(), "0.0.3", "<")) {
             $tableName = $setup->getTable('category_sync_log');
 
             if ($setup->getConnection()->isTableExists($tableName) != true) {
@@ -116,7 +116,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                             'unsigned' => true,
                             'nullable' => false
                         ]
-                    )->setComment('Category Sync Log');
+                    )->setComment('Product Sync Log');
                 $setup->getConnection()->createTable($table);
             }
         }
